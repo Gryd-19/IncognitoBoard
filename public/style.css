@@ -1,0 +1,92 @@
+* {
+  margin: 0px;
+  padding: 0px;
+  font-family: MuseoSans-500, Arial, sans-serif;
+  color: white;
+    text-shadow: 3px 3px 2px #000000;
+}
+
+body {
+  padding: 10px;
+  background-color: #161616; 
+}
+
+.replies {
+  margin-left: 50px;
+}
+
+.reply {
+  border: 1px dotted white;
+  margin: 5px;
+  padding: 5px;
+}
+
+.newReply {
+  margin: 10px 5px 10px 5px;
+}
+
+.thread {
+  border: 2px solid white;
+  padding: 5px;
+  margin-bottom: 5px;
+}
+
+.id {
+  font-size: 10.5px;
+}
+
+#submitNewThread {
+  margin: 50px;
+}
+input {
+  background-color: #161616;
+  color: white;
+  text-shadow: 3px 3px 2px #000000;
+  border: 0.1em solid #ffffff;
+  border-radius: 0.12em;
+  box-sizing: border-box;
+}
+input:focus {
+  color: #161616;
+  text-shadow: none;
+  background-color: #ffffff;
+}
+
+textarea {
+
+  background-color: #161616;
+  color: white;
+  text-shadow: 3px 3px 2px #000000;
+  border: 0.1em solid #ffffff;
+  border-radius: 0.12em;
+  box-sizing: border-box;
+}
+textarea:focus {
+  color: #161616;
+  text-shadow: none;
+  background-color: #ffffff;
+}
+button {
+  background-color: #161616;
+  color: #ffffff;
+  text-shadow: 3px 3px 2px #000000;
+  border: 0.1em solid #ffffff;
+  border-radius: 0.12em;
+  box-sizing: border-box;
+  text-decoration: none;
+}
+button:hover {
+  color: #161616;
+  text-shadow: none;
+  background-color: #ffffff;
+}
+a {
+  text-decoration: none;
+  color: #dc143c;
+}
+a:hover {
+  color: #14dbb3;
+}
+form{
+  margin-bottom: 1vh; 
+}
