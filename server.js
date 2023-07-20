@@ -1,5 +1,5 @@
 'use strict';
-
+require('dotenv').config()
 var express = require('express');
 var bodyParser = require('body-parser');
 var helmet = require('helmet');
@@ -37,7 +37,7 @@ app.route('/')
   .get(function(req, res) {
     let board=req.query["board_name"];
     if(board)res.redirect("/b/"+board);
-    res.sendFile(process.cwd() + '/views/index.html');
+    else res.sendFile(process.cwd() + '/views/index.html');
   });
 
 
