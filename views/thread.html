@@ -12,11 +12,8 @@
 
 <body>
   <main>
-	<header class="ms-3">
-    <h4 style="display:inline">
-      <a style="display:inline" id='threadLink'></a>
-		  <div style="display:inline" id='threadTitle'></div>
-    </h4>
+	<header class="ms-1 mt-2 container">
+    <h4 id='threadTitle'></h4>
 	</header>
 	<br>
     <div id='boardDisplay' class="container ms-2"></div>
@@ -27,9 +24,7 @@
         currentURL = currentURL.split('/');
         
         var url = "/api/replies/"+currentURL[0];
-        $('#threadLink').text('/'+currentURL[0]);
-        $('#threadLink').attr("href", '/b/'+currentURL[0])
-        $('#threadTitle').text('/'+currentURL[1]);
+        $('#threadTitle').html('<a href="'+'/b/'+currentURL[0]+'">/'+currentURL[0]+'</a>/'+currentURL[1]);
         $.ajax({
           type: "GET",
           url: url,
@@ -38,39 +33,39 @@
           {
             var boardThreads= [];
               console.log(ele);
-              var thread = ['<div class="thread">'];
-              thread.push('<div class="ps-3">')
+              var thread = ['<div class="pb-2">'];
+              thread.push('<div class="ps-md-3 ps-1 mb-2">')
               //id 
               thread.push('<p class="id text-body-secondary">id: '+ele._id+' ('+ele.created_on+')</p>');
               //text
-              thread.push('<h2>'+ele.text+'</h2>');
+              thread.push('<h1>'+ele.text+'</h1>');
               //delete
-              thread.push('<div class="col-4 mb-3">')
+              thread.push('<div class="col-10 col-md-5 col-lg-4 mb-3">')
               thread.push('<form id="deleteThread"><div class="input-group"><input type="hidden" value="'+ele._id+'" name="thread_id" required=""><input type="text" placeholder="password" name="delete_password" required="" class="form-control"><button type="submit" value="Delete" class="btn btn-outline-secondary">Delete</button></div></form>');
               //report
 
               thread.push('<form id="reportThread"><input type="hidden" name="report_id" value="'+ele._id+'"><input type="submit" value="Report" class="btn btn-outline-secondary form-control"></form>');
               thread.push('</div>')
-              thread.push('</div><div class="replies ms-5">');
+              thread.push('</div><div class="replies ms-md-5 ms-2">');
               ele.replies.forEach(function(rep) {
-                thread.push('<div class="reply ps-2 mt-2">')
+                thread.push('<div class="ps-2 mt-2">')
                 //id
                 thread.push('<small class="id text-body-secondary" >id: '+rep._id+' ('+rep.created_on+')</small>');
                 //text
                 thread.push('<h4>'+rep.text+'</h4>');
                 
                 //delete
-                thread.push('<div class="col-4 mb-3">')
+                thread.push('<div class="col-8 col-md-4 col-lg-3 mb-3">')
                 thread.push('<form id="deleteReply"><div class="input-group input-group-sm"><input type="hidden" value="'+ele._id+'" name="thread_id" required=""><input type="hidden" value="'+rep._id+'" name="reply_id" required=""><input type="text" placeholder="password" name="delete_password" required="" class="form-control"><button type="submit" value="Delete" class="btn btn-outline-secondary">Delete</button></div></form>');
                 //report
                 thread.push('<form id="reportReply"><input type="hidden" name="thread_id" value="'+ele._id+'"><input type="hidden" name="reply_id" value="'+rep._id+'"><input class="form-control btn btn-outline-secondary" type="submit" value="Report"></form>');
                 thread.push('</div>')
                 thread.push('</div>')
               });
-              thread.push('<div class="newReply container">')
-              thread.push('<form class="col-6" action="/api/replies/'+currentURL[0]+'/" method="post" id="newReply">');
+              thread.push('<div class="newReply container col-md-9 col-lg-6 ms-md-2 mt-md-4">')
+              thread.push('<form  action="/api/replies/'+currentURL[0]+'/" method="post" id="newReply">');
               thread.push('<input type="hidden" name="thread_id" value="'+ele._id+'">');
-              thread.push('<textarea class="form-control" rows="5"type="text" placeholder="Quick reply..." name="text" required=""></textarea><br>');
+              thread.push('<textarea class="form-control" rows="3"type="text" placeholder="Quick reply..." name="text" required=""></textarea><br>');
               thread.push('<div class="input-group">')
               thread.push('<input class="form-control" type="text" placeholder="password to delete" name="delete_password" required="" ><button class="btn btn-outline-secondary" type="submit" value="Submit">Submit</button>')
               thread.push('</form></div></div></div></div>')

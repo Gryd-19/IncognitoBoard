@@ -14,19 +14,13 @@ body {
   border: 0.1rem solid #fdfdfd0b;
 }
 
-.newReply {
-  margin: 10px 5px 10px 5px;
-}
 
 .thread {
   border: 0.1rem solid #fdfdfd0b;
-  margin-left:20px !important;
 }
 
 
-#submitNewThread {
-  margin: 20px;
-}
+
 
 
 

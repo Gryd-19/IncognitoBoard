@@ -14,9 +14,9 @@
       <h1 id='boardTitle' class="display-6 p-3"></h1>
     </header>
     
-    <div id='submitNewThread' class="container">
+    <div id='submitNewThread' class="container ms-lg-2 mb-2">
       <h3>Submit a new thread:</h3>
-      <form id="newThread" class="col-8" method="post" >
+      <form id="newThread" class="col-md-7 col-md-6" method="post" >
         <textarea class="form-control" rows="4" type='text' placeholder='Thread text...' name='text' required=true></textarea><br>
         <div class="input-group">
           <input class="form-control" type='text' placeholder='password to delete' name='delete_password' required=true>
@@ -43,15 +43,15 @@
             var boardThreads= [];
             data.forEach(function(ele) {
               console.log(ele);
-              var thread = ['<div class="thread container p-2">'];
-              thread.push('<div id="content" class="col-6 ms-3">')
+              var thread = ['<div class="thread container p-2 ms-md-2">'];
+              thread.push('<div id="content" class="ms-3">')
               //timestamp
               thread.push('<p class="text-body-secondary">id: '+ele._id+' ('+ele.created_on+')</p>');
               
               //text
               thread.push('<h4 class="mb-3">'+ele.text+'</h4>');
               //delete thread
-              thread.push('<div class="col-6 mb-3">')
+              thread.push('<div class="col-md-5 col-lg-4 mb-3">')
               thread.push('<form id="deleteThread"><div class="input-group"><input type="hidden" value="'+ele._id+'" name="thread_id" required=true><input type="text" placeholder="password" name="delete_password" required=true style="" class="form-control"><button type="submit" value="Delete" style="" class="btn btn-outline-secondary">Delete</button></div></form>');
               //report thread
               thread.push('<form id="reportThread"><input type="hidden" name="report_id" value="'+ele._id+'"><input type="submit" value="Report" style="" class="form-control btn btn-outline-secondary"></form>');
@@ -66,7 +66,7 @@
                 //text
                 thread.push('<h6 class="mb-1 mt-1">'+rep.text+'</h6>');
                 //delete reply
-                thread.push('<div class="col-2 mb-3">')
+                thread.push('<div class="col-sm-2 mb-3">')
                 thread.push('<form id="deleteReply"><div class="input-group input-group-sm"><input type="hidden" value="'+ele._id+'" name="thread_id" required=true><input type="hidden" value="'+rep._id+'" name="reply_id" required=true><input type="text" placeholder="password" name="delete_password" required=true style="" class="form-control"><button type="submit" value="Delete" class="btn btn-outline-secondary" style="">Delete</button></div></form>');
                 //report reply
                 thread.push('<form id="reportReply"><input type="hidden" name="thread_id" value="'+ele._id+'"><input type="hidden" name="reply_id" value="'+rep._id+'"><input type="submit" value="Report" class="form-control btn btn-outline-secondary btn-sm"></form>');
@@ -74,10 +74,10 @@
                 thread.push('</div>')
               });
               //new reply
-              thread.push('<div class="newReply container" >')
-              thread.push('<form class="col-6" action="/api/replies/'+current+'/" method="post" id="newReply">');
+              thread.push('<div class="newReply container col-md-7 ms-md-2" >')
+              thread.push('<form  action="/api/replies/'+current+'/" method="post" id="newReply">');
               thread.push('<input type="hidden" name="thread_id" value="'+ele._id+'">');
-              thread.push('<textarea class="form-control" style=""rows="5" type="text" placeholder="Quick reply..." name="text" required=true></textarea><br>');
+              thread.push('<textarea class="form-control" style=""rows="3" type="text" placeholder="Quick reply..." name="text" required=true></textarea><br>');
               thread.push('<div class="input-group">')
               thread.push('<input class="form-control" type="text" placeholder="password to delete" name="delete_password" required=true><button class="btn btn-outline-secondary" type="submit" value="Submit">Submit</button>')
               thread.push('</div></form></div></div></div>')
